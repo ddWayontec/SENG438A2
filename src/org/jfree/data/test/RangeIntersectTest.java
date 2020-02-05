@@ -3,7 +3,6 @@ package org.jfree.data.test;
 import static org.junit.Assert.*;
 
 import org.jfree.data.Range;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -13,10 +12,6 @@ public class RangeIntersectTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		controlRange = new Range (1, 10);
-	}
-
-	@Before
-	public void setUp() throws Exception {
 	}
 
 	@Test
