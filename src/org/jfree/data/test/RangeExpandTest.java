@@ -16,13 +16,7 @@ public class RangeExpandTest
     Range exampleRange;
     
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception 
-    {
-        
-    }
-    
-    @Before
-    public void setUp() throws Exception 
+    public void setUpBeforeClass() throws Exception 
     {
         exampleRange = new Range(2,6);
     }
@@ -53,15 +47,9 @@ public class RangeExpandTest
         Range shouldBeARangeFromNegativeThreeToEleven = Range.expand(exampleRange, 1.25, 1.25);
         assertEquals(new Range(-3,11), shouldBeARangeFromNegativeThreeToEleven);
     }
-
-    @After
-    public void tearDown() throws Exception 
-    {
-        
-    }
     
     @AfterClass
-    public static void tearDownAfterClass() throws Exception 
+    public void tearDownAfterClass() throws Exception 
     {
         
     }
