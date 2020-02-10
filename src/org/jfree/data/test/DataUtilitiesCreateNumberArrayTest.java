@@ -13,18 +13,10 @@ import org.junit.Test;
 
 public class DataUtilitiesCreateNumberArrayTest 
 {
-    double[] doubleArrayWithOnlyIntegers;
-    Number[] expectedNumberArrayWithOnlyIntegers;
-    
-    double[] doubleArrayWithNonIntegerValues;
-    Number[] expectedNumberArrayWithOnlyNonIntegerValues;
-    
-    double[] doubleArrayWithNegativeValues;
-    Number[] expectedNumberArrayWithOnlyNegativeValues;
-    
-    double[] doubleArrayWithMixedValues;
-    Number[] expectedNumberArrayWithMixedValues;
-    
+    double[] doubleArrayWithOnlyIntegers;  
+    double[] doubleArrayWithNonIntegerValues;  
+    double[] doubleArrayWithNegativeValues;  
+    double[] doubleArrayWithMixedValues; 
     double[] invalidDoubleArray;
 
     @BeforeClass
@@ -89,21 +81,57 @@ public class DataUtilitiesCreateNumberArrayTest
     public void testWithNonIntegersOnly() 
     {
         Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithNonIntegerValues);
-        fail("Not yet implemented");
+        if(doubleArrayWithNonIntegerValues.length != numberArray.length)
+        {
+            fail("The arrays were not of matching size...");
+        }
+        boolean areArraysMatching = true;
+        for(int i = 0; i < doubleArrayWithNonIntegerValues.length; i++)
+        {
+            if(doubleArrayWithNonIntegerValues[i] != numberArray[i].doubleValue())
+            {
+                areArraysMatching = false;
+            }
+        }
+        assertTrue(areArraysMatching);
     }
     
     @Test
     public void testWithNegativeValuesOnly() 
     {
         Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithNegativeValues);
-        fail("Not yet implemented");
+        if(doubleArrayWithNegativeValues.length != numberArray.length)
+        {
+            fail("The arrays were not of matching size...");
+        }
+        boolean areArraysMatching = true;
+        for(int i = 0; i < doubleArrayWithNegativeValues.length; i++)
+        {
+            if(doubleArrayWithNegativeValues[i] != numberArray[i].doubleValue())
+            {
+                areArraysMatching = false;
+            }
+        }
+        assertTrue(areArraysMatching);
     }
     
     @Test
     public void testWithIntegersAndNonIntegersAndNegativeValues() 
     {
         Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithMixedValues);
-        fail("Not yet implemented");
+        if(doubleArrayWithMixedValues.length != numberArray.length)
+        {
+            fail("The arrays were not of matching size...");
+        }
+        boolean areArraysMatching = true;
+        for(int i = 0; i < doubleArrayWithMixedValues.length; i++)
+        {
+            if(doubleArrayWithMixedValues[i] != numberArray[i].doubleValue())
+            {
+                areArraysMatching = false;
+            }
+        }
+        assertTrue(areArraysMatching);
     }
     
     @Test (expected = InvalidParameterException.class)
