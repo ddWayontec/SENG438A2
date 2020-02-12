@@ -2,6 +2,8 @@ package org.jfree.data.test;
 
 import static org.junit.Assert.*;
 
+import java.security.InvalidParameterException;
+
 import org.jfree.data.Range;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,25 +26,32 @@ public class RangeExpandTest
     {
         exampleRange = new Range(2,6);
     }
+    
+    @Test (expected = InvalidParameterException.class)
+    public void testingANullRange()
+    {
+        Range shouldThrowAnException = Range.expand(null, 0, 0);      
+    }
 
     @Test
     public void testingAnExpansionOfZero() 
     {
         Range shouldBeACopyOfExampleRange = Range.expand(exampleRange, 0, 0);
         assertEquals(exampleRange, shouldBeACopyOfExampleRange);
-    }
+    }  
     
     @Test
     public void testingAnExpansionOfUnderOneHundred()
     {
-        Range shouldBeARangeFromOneToNine = Range.expand(exampleRange, 0.5, 0.75);
-        assertEquals(new Range(1,9), shouldBeARangeFromOneToNine);
+        Range shouldBeARangeFromZeroToNine = Range.expand(exampleRange, 0.5, 0.75);
+        assertEquals(new Range(0,9), shouldBeARangeFromZeroToNine);
     }
     
     @Test
     public void testingAnExpansionOfOverOneHundred()
     {
-        fail("Not yet implemented");
+        Range shouldBeARangeFromNegativeThreeToEleven = Range.expand(exampleRange, 1.25, 1.25);
+        assertEquals(new Range(-3,11), shouldBeARangeFromNegativeThreeToEleven);
     }
 
     @After
