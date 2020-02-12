@@ -1,10 +1,11 @@
 /**
  * 
  */
-package org.jfree.data;
+package org.jfree.data.test;
 
 import static org.junit.Assert.*;
 
+import org.jfree.data.Range;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,14 +45,14 @@ public class RangeCombineTest {
 	@Test
 	public void combinedRangeNegatives() {
 		Range expected = new Range(-10.0, -1.0);
-		assertEquals(expected, Range.combine(negRange1, negRange2));
+		assertEquals("Expected range is (-10.0, -1.0)", expected, Range.combine(negRange1, negRange2));
 		//fail("Not yet implemented");
 	}
 	
 	@Test
 	public void combinedRangePositives() {
 		Range expected = new Range(1.0, 10.0);
-		assertEquals(expected, Range.combine(posRange2, posRange1));
+		assertEquals("Expected range is (1.0, 10.0)", expected, Range.combine(posRange2, posRange1));
 	}
 	
 	@Test
@@ -64,13 +65,13 @@ public class RangeCombineTest {
 	@Test
 	public void combinedRangeZeroAndPos() {
 		Range expected = new Range(0.0, 6.0);
-		assertEquals(expected, Range.combine(posRange1, zeroToPosRange));
+		assertEquals("Expected range is (0.0, 6.0)", expected, Range.combine(posRange1, zeroToPosRange));
 	}
 
 	@Test
 	public void combinedRangeZeroAndNeg() {
 		Range expected = new Range(-5.0, 0.0);
-		assertEquals(expected, Range.combine(negRange1, negToZeroRange));
+		assertEquals("Expected range is (-5.0, 0.0)", expected, Range.combine(negRange1, negToZeroRange));
 	}
 	
 	
