@@ -61,83 +61,123 @@ public class DataUtilitiesCreateNumberArrayTest
     @Test
     public void testWithIntegersOnly() 
     {
-        Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithOnlyIntegers);
-        if(doubleArrayWithOnlyIntegers.length != numberArray.length)
+        try
         {
-            fail("The arrays were not of matching size...");
-        }
-        boolean areArraysMatching = true;
-        for(int i = 0; i < doubleArrayWithOnlyIntegers.length; i++)
-        {
-            if(doubleArrayWithOnlyIntegers[i] != numberArray[i].doubleValue())
+            Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithOnlyIntegers);
+            if(doubleArrayWithOnlyIntegers.length != numberArray.length)
             {
-                areArraysMatching = false;
+                fail("The arrays were not of matching size...");
             }
+            boolean areArraysMatching = true;
+            for(int i = 0; i < doubleArrayWithOnlyIntegers.length; i++)
+            {
+                if(doubleArrayWithOnlyIntegers[i] != numberArray[i].doubleValue())
+                {
+                    areArraysMatching = false;
+                }
+            }
+            assertTrue("The array with integers only produced by createNumberArray did not match the values of the original", areArraysMatching);
         }
-        assertTrue(areArraysMatching);
+        catch(Exception e)
+        {
+            fail("The test for creating a number array of only integers produced an exception...");
+        }
     }
     
     @Test
     public void testWithNonIntegersOnly() 
     {
-        Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithNonIntegerValues);
-        if(doubleArrayWithNonIntegerValues.length != numberArray.length)
+        try
         {
-            fail("The arrays were not of matching size...");
-        }
-        boolean areArraysMatching = true;
-        for(int i = 0; i < doubleArrayWithNonIntegerValues.length; i++)
-        {
-            if(doubleArrayWithNonIntegerValues[i] != numberArray[i].doubleValue())
+            Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithNonIntegerValues);
+            if(doubleArrayWithNonIntegerValues.length != numberArray.length)
             {
-                areArraysMatching = false;
+                fail("The arrays were not of matching size...");
             }
+            boolean areArraysMatching = true;
+            for(int i = 0; i < doubleArrayWithNonIntegerValues.length; i++)
+            {
+                if(doubleArrayWithNonIntegerValues[i] != numberArray[i].doubleValue())
+                {
+                    areArraysMatching = false;
+                }
+            }
+            assertTrue("The non-integer array produced by createNumberArray did not match the values of the original", areArraysMatching);
         }
-        assertTrue(areArraysMatching);
+        catch(Exception e)
+        {
+            fail("The test for creating a number array of only non-integers produced an exception...");
+        }
     }
     
     @Test
     public void testWithNegativeValuesOnly() 
     {
-        Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithNegativeValues);
-        if(doubleArrayWithNegativeValues.length != numberArray.length)
+        try
         {
-            fail("The arrays were not of matching size...");
-        }
-        boolean areArraysMatching = true;
-        for(int i = 0; i < doubleArrayWithNegativeValues.length; i++)
-        {
-            if(doubleArrayWithNegativeValues[i] != numberArray[i].doubleValue())
+            Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithNegativeValues);
+            if(doubleArrayWithNegativeValues.length != numberArray.length)
             {
-                areArraysMatching = false;
+                fail("The arrays were not of matching size...");
             }
+            boolean areArraysMatching = true;
+            for(int i = 0; i < doubleArrayWithNegativeValues.length; i++)
+            {
+                if(doubleArrayWithNegativeValues[i] != numberArray[i].doubleValue())
+                {
+                    areArraysMatching = false;
+                }
+            }
+            assertTrue("The negative valued array produced by createNumberArray did not match the values of the original", areArraysMatching);
         }
-        assertTrue(areArraysMatching);
+        catch(Exception e)
+        {
+            fail("The test for creating a number array of only negative values produced an exception...");
+        }
     }
     
     @Test
     public void testWithIntegersAndNonIntegersAndNegativeValues() 
     {
-        Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithMixedValues);
-        if(doubleArrayWithMixedValues.length != numberArray.length)
+        try
         {
-            fail("The arrays were not of matching size...");
-        }
-        boolean areArraysMatching = true;
-        for(int i = 0; i < doubleArrayWithMixedValues.length; i++)
-        {
-            if(doubleArrayWithMixedValues[i] != numberArray[i].doubleValue())
+            Number[] numberArray = DataUtilities.createNumberArray(doubleArrayWithMixedValues);
+            if(doubleArrayWithMixedValues.length != numberArray.length)
             {
-                areArraysMatching = false;
+                fail("The arrays were not of matching size...");
             }
+            boolean areArraysMatching = true;
+            for(int i = 0; i < doubleArrayWithMixedValues.length; i++)
+            {
+                if(doubleArrayWithMixedValues[i] != numberArray[i].doubleValue())
+                {
+                    areArraysMatching = false;
+                }
+            }
+            assertTrue("The mixed array produced by createNumberArray did not match the values of the original", areArraysMatching);
         }
-        assertTrue(areArraysMatching);
+        catch (Exception e)
+        {
+            fail("The test for creating a number array of only mixed values produced an exception...");
+        }
     }
     
-    @Test (expected = InvalidParameterException.class)
+    @Test
     public void testForANullArray() 
     {
-        Number[] numberArray = DataUtilities.createNumberArray(invalidDoubleArray);
+        try
+        {
+            Number[] numberArray = DataUtilities.createNumberArray(invalidDoubleArray);
+        }
+        catch (InvalidParameterException ipe)
+        {
+            //This is here so that the test automatically passes if it threw the correct exception!
+            assertTrue("This message should not be printed", true);
+        }
+        catch (Exception e)
+        {
+            fail("The null array produced an exception that was not an invalid parameter exception...");
+        }
     }
 
     @After

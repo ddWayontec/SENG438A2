@@ -27,31 +27,64 @@ public class RangeExpandTest
         exampleRange = new Range(2,6);
     }
     
-    @Test (expected = InvalidParameterException.class)
+    @Test
     public void testingANullRange()
     {
-        Range shouldThrowAnException = Range.expand(null, 0, 0);      
+        try
+        {
+            Range shouldThrowAnException = Range.expand(null, 0, 0);   
+        }
+        catch(InvalidParameterException ipe)
+        {
+          //This is here so that the test automatically passes if it threw the correct exception!
+            assertTrue("This message should not be printed", true);
+        }
+        catch(Exception e)
+        {
+            fail("Expanding a null range produced the wrong exception...");
+        } 
     }
 
     @Test
     public void testingAnExpansionOfZero() 
     {
-        Range shouldBeACopyOfExampleRange = Range.expand(exampleRange, 0, 0);
-        assertEquals(exampleRange, shouldBeACopyOfExampleRange);
+        try
+        {
+            Range shouldBeACopyOfExampleRange = Range.expand(exampleRange, 0, 0);
+            assertEquals("The range produced after an expansion of zero was different than the original!", exampleRange, shouldBeACopyOfExampleRange);
+        }
+        catch(Exception e)
+        {
+            fail("An expansion of zero produced an exception!");
+        }
     }  
     
     @Test
     public void testingAnExpansionOfUnderOneHundred()
     {
-        Range shouldBeARangeFromZeroToNine = Range.expand(exampleRange, 0.5, 0.75);
-        assertEquals(new Range(0,9), shouldBeARangeFromZeroToNine);
+        try
+        {
+            Range shouldBeARangeFromZeroToNine = Range.expand(exampleRange, 0.5, 0.75);
+            assertEquals("The range produced after an expansion of under one hundred was incorrect!", new Range(0,9), shouldBeARangeFromZeroToNine);
+        }
+        catch(Exception e)
+        {
+            fail("An expansion of under one hundred produced an exception!");
+        }
     }
     
     @Test
     public void testingAnExpansionOfOverOneHundred()
     {
-        Range shouldBeARangeFromNegativeThreeToEleven = Range.expand(exampleRange, 1.25, 1.25);
-        assertEquals(new Range(-3,11), shouldBeARangeFromNegativeThreeToEleven);
+        try
+        {
+            Range shouldBeARangeFromNegativeThreeToEleven = Range.expand(exampleRange, 1.25, 1.25);
+            assertEquals("The range produced after an expansion of over one hundred was incorrect!", new Range(-3,11), shouldBeARangeFromNegativeThreeToEleven);
+        }
+        catch(Exception e)
+        {
+            fail("An expansion of over one hundred produced an exception!");
+        }
     }
 
     @After
