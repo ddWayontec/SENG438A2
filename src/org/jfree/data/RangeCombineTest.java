@@ -57,7 +57,8 @@ public class RangeCombineTest {
 	@Test
 	public void combinedRangePosWNeg() {
 		Range expected = new Range(-5.0, 5.0);
-		assertEquals(expected, Range.combine(posRange1, negRange1));
+		
+		assertEquals("These ranges are disjoint", expected, Range.combine(posRange1, negRange1));
 	}
 	
 	@Test
