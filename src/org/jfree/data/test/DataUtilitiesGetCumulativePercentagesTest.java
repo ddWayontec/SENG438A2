@@ -1,4 +1,4 @@
-package org.jfree.data;
+package org.jfree.data.test;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.jfree.data.DataUtilities;
+import org.jfree.data.KeyedValues;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.After;
@@ -82,7 +84,7 @@ public class DataUtilitiesGetCumulativePercentagesTest {
 		
 		//assertEquals(expected, actual);
 		
-		assertTrue(DataUtilities.getCumulativePercentages(input).equals(expected));
+		assertTrue("Cumalating percentages for positive numbers error (last value should be 1.0)", DataUtilities.getCumulativePercentages(input).equals(expected));
 	}
 	
 	@Test
@@ -146,7 +148,7 @@ public class DataUtilitiesGetCumulativePercentagesTest {
 		
 	//	assertEquals(expected, actual);
 		
-		assertTrue(DataUtilities.getCumulativePercentages(input).equals(expected));
+		assertTrue("Cumalating percentages for negative numbers error (last value should be 1.0)", DataUtilities.getCumulativePercentages(input).equals(expected));
 	}
 	
 	@Test
@@ -185,7 +187,7 @@ public class DataUtilitiesGetCumulativePercentagesTest {
 			//fail("Exeption by dividing by zero");
 		}
 		catch(Exception err) {
-			assertEquals("Exception thrown should be",  ArithmeticException.class, err.getClass());
+			assertEquals("The method will try to divide by zero, so it should throw an exception",  ArithmeticException.class, err.getClass());
 		}
 		
 	}
