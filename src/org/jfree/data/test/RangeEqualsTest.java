@@ -31,5 +31,6 @@ public class RangeEqualsTest {
 		Range notEqualObject = new Range(0, 1);
 		assertFalse( rangeObject.equals(notEqualObject) );
 	}
+	
 
 }
