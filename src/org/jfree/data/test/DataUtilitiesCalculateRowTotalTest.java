@@ -52,7 +52,7 @@ public class DataUtilitiesCalculateRowTotalTest {
 	}
 	
 	@Test
-	public void Empty() {
+	public void emptyChart() {
 		Mockery mockingContext = new Mockery(); 
 		final Values2D values = mockingContext.mock(Values2D.class);
 		
@@ -67,7 +67,7 @@ public class DataUtilitiesCalculateRowTotalTest {
 	}
 
 	@Test
-	public void NotEmptyPositiveRow() {
+	public void notEmptyPositiveRow() {
 		Mockery mockingContext = new Mockery(); 
 		final Values2D values = mockingContext.mock(Values2D.class);
 		
@@ -95,7 +95,7 @@ public class DataUtilitiesCalculateRowTotalTest {
 
 	
 	@Test
-	public void NotEmptyNegativeRow() {
+	public void notEmptyNegativeRow() {
 		Mockery mockingContext = new Mockery(); 
 		final Values2D values = mockingContext.mock(Values2D.class);
 		
