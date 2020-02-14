@@ -33,4 +33,34 @@ public class RangeEqualsTest {
 	}
 	
 
+	
+	@Test
+	public void NotRangeObject() {
+		assertFalse(rangeObject.equals("asdasdas"));
+	}
+	
+	@Test
+	public void DiffRangeObject1() {
+		assertFalse(rangeObject.equals(new Range(10, 20)));
+	}
+	
+	public void DiffRangeObject2() {
+		assertFalse(rangeObject.equals(new Range(-1, 1)));
+	}
+	
+	@Test
+	public void SameRangeObject() {
+		assertFalse(rangeObject.equals(rangeObject));
+	}
+	
+	@Test
+	public void DiffLowerBound() {
+		assertFalse(rangeObject.equals(new Range(1, 1)));
+	}
+	
+	@Test
+	public void DiffUpperBound() {
+		assertFalse( rangeObject.equals(new Range(-1, 0)));
+	}
+
 }
